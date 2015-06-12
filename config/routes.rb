@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  root 'pet_requests#index'
   resources :pet_requests, path: 'pet-requests'
-
-  root 'sessions#index'
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
