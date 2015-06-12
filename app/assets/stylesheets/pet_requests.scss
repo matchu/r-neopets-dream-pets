@@ -1,3 +1,15 @@
 // Place all the styles related to the pet_requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pet-requests {
+  .edit, .destroy {
+    display: none;
+  }
+
+  &.admin, tr.current-user {
+    .edit, .destroy {
+      display: inline;
+    }
+  }
+}

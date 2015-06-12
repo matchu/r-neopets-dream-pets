@@ -1,49 +1,51 @@
 <h1>/r/neopets Dream Pet List</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Conversion state</th>
-      <th>Species</th>
-      <th>Color</th>
-      <th>Minimum name quality</th>
-      <th>Info</th>
-      <th>Requires clothes</th>
-      <th>Requested by</th>
-      <th>Requested when</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pet_requests.each do |pet_request| %>
+<% cache pet_requests_table_cache_key do %>
+  <table class="pet-requests">
+    <thead>
       <tr>
-        <td><%= pet_request.conversion_state.name %></td>
-        <td><%= pet_request.species.name %></td>
-        <td><%= pet_request.color.name %></td>
-        <td><%= pet_request.minimum_name_quality.abbreviation %></td>
-        <td><%= pet_request.info %></td>
-        <td><%= pet_request.requires_clothes %></td>
-        <td><%= link_to_user pet_request.creator %></td>
-        <td>
-          <%= time_tag pet_request.created_at, title: pet_request.created_at do %>
-            <%= time_ago_in_words pet_request.created_at %> ago
-          <% end %>
-        </td>
-        <td>
-          <% if can_edit_pet_request? pet_request %>
-            <%= link_to 'Edit', edit_pet_request_path(pet_request) %>
-          <% end %>
-        </td>
-        <td>
-          <% if can_edit_pet_request? pet_request %>
-            <%= link_to 'Destroy', pet_request, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
+        <th>Conversion state</th>
+        <th>Species</th>
+        <th>Color</th>
+        <th>Minimum name quality</th>
+        <th>Info</th>
+        <th>Requires clothes</th>
+        <th>Requested by</th>
+        <th>Requested when</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @pet_requests.each do |pet_request| %>
+        <% cache ['pet_request_row', pet_request] do %>
+          <tr>
+            <td><%= pet_request.conversion_state.name %></td>
+            <td><%= pet_request.species.name %></td>
+            <td><%= pet_request.color.name %></td>
+            <td><%= pet_request.minimum_name_quality.abbreviation %></td>
+            <td><%= pet_request.info %></td>
+            <td><%= pet_request.requires_clothes %></td>
+            <td class="creator" data-id="<%= pet_request.creator.id %>">
+              <%= link_to_user pet_request.creator %>
+            </td>
+            <td>
+              <%= time_tag pet_request.created_at, title: pet_request.created_at do %>
+                <%= time_ago_in_words pet_request.created_at %> ago
+              <% end %>
+            </td>
+            <td>
+              <%= link_to 'Edit', edit_pet_request_path(pet_request), :class => 'edit' %>
+            </td>
+            <td>
+              <%= link_to 'Destroy', pet_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <% if can_create_pet_requests? %>
   <br>
