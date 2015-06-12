@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612151834) do
+ActiveRecord::Schema.define(version: 20150612162039) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -19,11 +19,15 @@ ActiveRecord::Schema.define(version: 20150612151834) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "colors", ["name"], name: "index_colors_on_name"
+
   create_table "conversion_states", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "conversion_states", ["name"], name: "index_conversion_states_on_name"
 
   create_table "name_qualities", force: :cascade do |t|
     t.string   "abbreviation"
@@ -43,11 +47,15 @@ ActiveRecord::Schema.define(version: 20150612151834) do
     t.datetime "updated_at",              null: false
   end
 
+  add_index "pet_requests", ["created_at"], name: "index_pet_requests_on_created_at"
+
   create_table "species", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "species", ["name"], name: "index_species_on_name"
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"
