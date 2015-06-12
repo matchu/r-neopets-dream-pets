@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.new-request-link {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1em;
+
+  &, &:visited {
+    color: green;
+  }
+
+  &:hover {
+    background: none;
+    text-decoration: none;
+  }
+}
+
 .pet-requests {
   .edit, .destroy {
     display: none;
