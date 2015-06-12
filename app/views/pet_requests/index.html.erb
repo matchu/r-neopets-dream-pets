@@ -3,9 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>Conversion state</th>
       <th>Species</th>
       <th>Color</th>
-      <th>Conversion state</th>
       <th>Minimum name quality</th>
       <th>Info</th>
       <th>Requires clothes</th>
@@ -18,9 +18,9 @@
   <tbody>
     <% @pet_requests.each do |pet_request| %>
       <tr>
+        <td><%= pet_request.conversion_state.name %></td>
         <td><%= pet_request.species.name %></td>
         <td><%= pet_request.color.name %></td>
-        <td><%= pet_request.conversion_state.name %></td>
         <td><%= pet_request.minimum_name_quality.abbreviation %></td>
         <td><%= pet_request.info %></td>
         <td><%= pet_request.requires_clothes %></td>

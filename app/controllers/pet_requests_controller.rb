@@ -6,7 +6,8 @@ class PetRequestsController < ApplicationController
   # GET /pet_requests
   # GET /pet_requests.json
   def index
-    @pet_requests = PetRequest.includes(:creator).all
+    @pet_requests = PetRequest.includes(:creator).joins(:species, :color, :conversion_state).
+      order('conversion_states.name, species.name, colors.name, created_at')
   end
 
   # GET /pet_requests/new
