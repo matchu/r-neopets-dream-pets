@@ -1,6 +1,7 @@
 class PetRequestsController < ApplicationController
   before_action :require_signed_in, except: [:index]
   before_action :set_editable_pet_request, only: [:edit, :update, :destroy]
+  before_action :set_attribute_collections, only: [:new, :create, :edit, :update]
 
   # GET /pet_requests
   # GET /pet_requests.json
@@ -61,6 +62,13 @@ class PetRequestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_editable_pet_request
       @pet_request = current_user.pet_requests.find(params[:id])
+    end
+
+    def set_attribute_collections
+      @species = Species.order(:name).all
+      @colors = Color.order(:name).all
+      @conversion_states = ConversionState.order(:name).all
+      @name_qualities = NameQuality.all
     end
 
     def require_signed_in

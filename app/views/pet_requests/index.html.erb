@@ -17,10 +17,10 @@
   <tbody>
     <% @pet_requests.each do |pet_request| %>
       <tr>
-        <td><%= pet_request.species_id %></td>
-        <td><%= pet_request.color_id %></td>
-        <td><%= pet_request.conversion_state_id %></td>
-        <td><%= pet_request.minimum_name_quality_id %></td>
+        <td><%= pet_request.species.name %></td>
+        <td><%= pet_request.color.name %></td>
+        <td><%= pet_request.conversion_state.name %></td>
+        <td><%= pet_request.minimum_name_quality.abbreviation %></td>
         <td><%= pet_request.info %></td>
         <td><%= link_to_user pet_request.creator %></td>
         <td><%= pet_request.requires_clothes %></td>
