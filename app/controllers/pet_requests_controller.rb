@@ -8,12 +8,6 @@ class PetRequestsController < ApplicationController
     @pet_requests = PetRequest.all
   end
 
-  # GET /pet_requests/1
-  # GET /pet_requests/1.json
-  def show
-    @pet_request = PetRequest.find(params[:id])
-  end
-
   # GET /pet_requests/new
   def new
     @pet_request = current_user.pet_requests.build
@@ -30,7 +24,7 @@ class PetRequestsController < ApplicationController
 
     respond_to do |format|
       if @pet_request.save
-        format.html { redirect_to @pet_request, notice: 'Pet request was successfully created.' }
+        format.html { redirect_to pet_requests_path, notice: 'Pet request was successfully created.' }
         format.json { render :show, status: :created, location: @pet_request }
       else
         format.html { render :new }
@@ -44,7 +38,7 @@ class PetRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @pet_request.update(pet_request_params)
-        format.html { redirect_to @pet_request, notice: 'Pet request was successfully updated.' }
+        format.html { redirect_to pet_requests_path, notice: 'Pet request was successfully updated.' }
         format.json { render :show, status: :ok, location: @pet_request }
       else
         format.html { render :edit }
@@ -58,7 +52,7 @@ class PetRequestsController < ApplicationController
   def destroy
     @pet_request.destroy
     respond_to do |format|
-      format.html { redirect_to pet_requests_url, notice: 'Pet request was successfully destroyed.' }
+      format.html { redirect_to pet_requests_path, notice: 'Pet request was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
