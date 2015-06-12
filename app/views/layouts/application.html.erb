@@ -10,11 +10,7 @@
 
 <header>
   <% if auth? %>
-    <% if current_auth_provider.reddit? %>
-      Welcome, <%= link_to current_auth_name, reddit_user_path(current_auth_name) %>!
-    <% else %>
-      Welcome, <%= current_auth_name %>!
-    <% end %>
+    Welcome, <%= link_to_user current_auth_provider, current_auth_name %>!
     <%= link_to 'Sign out', sign_out_path %>
   <% else %>
     <% if Rails.env.development? %>
