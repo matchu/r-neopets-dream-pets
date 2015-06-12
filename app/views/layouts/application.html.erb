@@ -11,6 +11,9 @@
 <header>
   <% if user_signed_in? %>
     Welcome, <%= link_to_user current_user %>!
+    <% if current_user.admin? %>
+      As an admin, you can edit or delete <em>any</em> pet request.
+    <% end %>
     <%= link_to 'Sign out', sign_out_path %>
   <% else %>
     <% if Rails.env.development? %>

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   end
 
   def can_edit_pet_request?(pet_request)
-    pet_request.creator_id == id
+    pet_request.creator_id == id || admin?
   end
 
   def self.from_auth_hash(auth_hash)
