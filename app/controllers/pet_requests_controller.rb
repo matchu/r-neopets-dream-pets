@@ -61,7 +61,7 @@ class PetRequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_editable_pet_request
-      @pet_request = current_user.pet_requests.find(params[:id])
+      @pet_request = current_user.editable_pet_requests.find(params[:id])
     end
 
     def set_attribute_collections

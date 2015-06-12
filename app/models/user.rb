@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
     pet_request.creator_id == id || admin?
   end
 
+  def editable_pet_requests
+    if admin?
+      PetRequest.all
+    else
+      pet_requests
+    end
+  end
+
   def self.from_auth_hash(auth_hash)
     User.find_or_initialize_by(provider: auth_hash['provider'], uid: auth_hash['uid']).tap do |user|
       user.auth_hash = auth_hash
