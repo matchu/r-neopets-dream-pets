@@ -9,6 +9,15 @@
 <body>
 
 <header>
+  <% if auth? %>
+    Welcome, <%= current_auth_name %>!
+    <%= link_to 'Sign out', sign_out_path %>
+  <% else %>
+    <% if Rails.env.development? %>
+      <%= link_to 'Sign in as a developer', '/auth/developer' %>
+    <% end %>
+    <%# link_to 'Sign in with Reddit', '/auth/reddit' %>
+  <% end %>
 </header>
 
 <%= yield %>

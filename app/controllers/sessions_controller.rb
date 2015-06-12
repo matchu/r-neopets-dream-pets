@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
   def index
     # Auth debug method for development
+    @current_auth_hash = current_auth_hash
   end
 
   protected
