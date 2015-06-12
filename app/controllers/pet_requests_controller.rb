@@ -5,7 +5,7 @@ class PetRequestsController < ApplicationController
   # GET /pet_requests
   # GET /pet_requests.json
   def index
-    @pet_requests = PetRequest.all
+    @pet_requests = PetRequest.includes(:creator).all
   end
 
   # GET /pet_requests/new
