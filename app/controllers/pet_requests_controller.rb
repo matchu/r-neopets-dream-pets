@@ -1,5 +1,5 @@
 class PetRequestsController < ApplicationController
-  before_action :require_signed_in, except: [:index, :show]
+  before_action :require_signed_in, except: [:index]
   before_action :set_editable_pet_request, only: [:edit, :update, :destroy]
 
   # GET /pet_requests
