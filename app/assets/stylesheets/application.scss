@@ -27,3 +27,35 @@
   @extend .alert-success;
   color: green;
 }
+
+nav {
+  @extend .navbar;
+  @extend .navbar-default;
+
+  > div {
+    @extend .container-fluid;
+
+    > header {
+      @extend .navbar-header;
+
+      > a {
+        @extend .navbar-brand;
+      }
+    }
+
+    > p {
+      @extend .navbar-text;
+      @extend .navbar-right;
+
+      a {
+        @extend .navbar-link;
+      }
+    }
+
+    > ul {
+      @extend .nav;
+      @extend .navbar-nav;
+      @extend .navbar-right;
+    }
+  }
+}
