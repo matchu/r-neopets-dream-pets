@@ -8,9 +8,10 @@
       <th>Conversion state</th>
       <th>Minimum name quality</th>
       <th>Info</th>
-      <th>Creator</th>
       <th>Requires clothes</th>
-      <th colspan="3"></th>
+      <th>Requested by</th>
+      <th>Requested when</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -22,8 +23,13 @@
         <td><%= pet_request.conversion_state.name %></td>
         <td><%= pet_request.minimum_name_quality.abbreviation %></td>
         <td><%= pet_request.info %></td>
-        <td><%= link_to_user pet_request.creator %></td>
         <td><%= pet_request.requires_clothes %></td>
+        <td><%= link_to_user pet_request.creator %></td>
+        <td>
+          <%= time_tag pet_request.created_at, title: pet_request.created_at do %>
+            <%= time_ago_in_words pet_request.created_at %> ago
+          <% end %>
+        </td>
         <td>
           <% if can_edit_pet_request? pet_request %>
             <%= link_to 'Edit', edit_pet_request_path(pet_request) %>
