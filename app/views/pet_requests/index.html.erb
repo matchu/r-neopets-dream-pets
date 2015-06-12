@@ -22,7 +22,7 @@
         <td><%= pet_request.conversion_state_id %></td>
         <td><%= pet_request.minimum_name_quality_id %></td>
         <td><%= pet_request.info %></td>
-        <td><%= pet_request.creator_id %></td>
+        <td><%= link_to_user pet_request.creator %></td>
         <td><%= pet_request.requires_clothes %></td>
         <td><%= link_to 'Show', pet_request %></td>
         <td>
