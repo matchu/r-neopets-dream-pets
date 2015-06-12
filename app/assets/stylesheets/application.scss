@@ -55,7 +55,18 @@ nav {
     > ul {
       @extend .nav;
       @extend .navbar-nav;
-      @extend .navbar-right;
+
+      &.auth {
+        @extend .navbar-right;
+      }
     }
+  }
+}
+
+.new-request-link {
+  font-weight: bold;
+
+  &, &:visited {
+    color: green;
   }
 }

@@ -1,9 +1,3 @@
-<h1>/r/neopets Dream Pet List</h1>
-
-<% if can_create_pet_requests? %>
-  <%= link_to 'Add your dream pet to the list', new_pet_request_path, class: 'new-request-link' %>
-<% end %>
-
 <% cache pet_requests_table_cache_key do %>
   <table class="pet-requests">
     <thead>

@@ -24,24 +24,27 @@
       <header>
         <%= link_to '/r/neopets Dream Pets', root_path %>
       </header>
-        <% if user_signed_in? %>
-          <ul>
-            <li><%= link_to 'Sign out', sign_out_path %></li>
-          </ul>
-          <p>
-            Welcome, <%= link_to_user current_user %>!
-            <% if current_user.admin? %>
-              As an admin, you can edit or delete <em>any</em> pet request.
-            <% end %>
-          </p>
-        <% else %>
-          <ul>
-          <% if Rails.env.development? %>
-            <li><%= link_to 'Sign in as a developer', '/auth/developer' %></li>
+      <% if user_signed_in? %>
+        <ul>
+          <li><%= link_to "Add your pet", new_pet_request_path, class: 'new-request-link' %></li>
+        </ul>
+        <ul class="auth">
+          <li><%= link_to 'Sign out', sign_out_path %></li>
+        </ul>
+        <p>
+          Welcome, <%= link_to_user current_user %>!
+          <% if current_user.admin? %>
+            As an admin, you can edit or delete <em>any</em> pet request.
           <% end %>
-            <li><%= link_to 'Sign in with Reddit', '/auth/reddit' %></li>
-          </ul>
+        </p>
+      <% else %>
+        <ul class="auth">
+        <% if Rails.env.development? %>
+          <li><%= link_to 'Sign in as a developer', '/auth/developer' %></li>
         <% end %>
+          <li><%= link_to 'Sign in with Reddit', '/auth/reddit' %></li>
+        </ul>
+      <% end %>
     </div>
   </nav>
 
