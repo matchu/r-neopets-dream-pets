@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612044114) do
+ActiveRecord::Schema.define(version: 20150612045535) do
+
+  create_table "pet_requests", force: :cascade do |t|
+    t.integer  "species_id"
+    t.integer  "color_id"
+    t.integer  "conversion_state_id"
+    t.integer  "minimum_name_quality_id"
+    t.text     "info"
+    t.integer  "creator_id"
+    t.boolean  "requires_clothes"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"

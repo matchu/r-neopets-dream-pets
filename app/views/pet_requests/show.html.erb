@@ -1,0 +1,39 @@
+<p>
+  <strong>Species:</strong>
+  <%= @pet_request.species_id %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @pet_request.color_id %>
+</p>
+
+<p>
+  <strong>Conversion state:</strong>
+  <%= @pet_request.conversion_state_id %>
+</p>
+
+<p>
+  <strong>Minimum name quality:</strong>
+  <%= @pet_request.minimum_name_quality_id %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @pet_request.info %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @pet_request.creator_id %>
+</p>
+
+<p>
+  <strong>Requires clothes:</strong>
+  <%= @pet_request.requires_clothes %>
+</p>
+
+<% if can_edit_pet_request?(@pet_request) %>
+  <%= link_to 'Edit', edit_pet_request_path(@pet_request) %> |
+<% end %>
+<%= link_to 'Back', pet_requests_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  species_id: 1
+  color_id: 1
+  conversion_state_id: 1
+  minimum_name_quality_id: 1
+  info: MyText
+  creator_id: 1
+  requires_clothes: false
+
+two:
+  species_id: 1
+  color_id: 1
+  conversion_state_id: 1
+  minimum_name_quality_id: 1
+  info: MyText
+  creator_id: 1
+  requires_clothes: false

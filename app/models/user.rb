@@ -1,8 +1,14 @@
 class User < ActiveRecord::Base
   serialize :auth_hash
 
+  has_many :pet_requests, foreign_key: 'creator_id'
+
   def name
     auth_hash['info']['name']
+  end
+
+  def can_edit_pet_request?(pet_request)
+    pet_request.creator_id == id
   end
 
   def self.from_auth_hash(auth_hash)

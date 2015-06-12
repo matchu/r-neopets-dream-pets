@@ -1,0 +1,46 @@
+<h1>Listing Pet Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Species</th>
+      <th>Color</th>
+      <th>Conversion state</th>
+      <th>Minimum name quality</th>
+      <th>Info</th>
+      <th>Creator</th>
+      <th>Requires clothes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pet_requests.each do |pet_request| %>
+      <tr>
+        <td><%= pet_request.species_id %></td>
+        <td><%= pet_request.color_id %></td>
+        <td><%= pet_request.conversion_state_id %></td>
+        <td><%= pet_request.minimum_name_quality_id %></td>
+        <td><%= pet_request.info %></td>
+        <td><%= pet_request.creator_id %></td>
+        <td><%= pet_request.requires_clothes %></td>
+        <td><%= link_to 'Show', pet_request %></td>
+        <td>
+          <% if can_edit_pet_request? pet_request %>
+            <%= link_to 'Edit', edit_pet_request_path(pet_request) %>
+          <% end %>
+        </td>
+        <td>
+          <% if can_edit_pet_request? pet_request %>
+            <%= link_to 'Destroy', pet_request, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can_create_pet_requests? %>
+  <br>
+  <%= link_to 'New Pet request', new_pet_request_path %>
+<% end %>
