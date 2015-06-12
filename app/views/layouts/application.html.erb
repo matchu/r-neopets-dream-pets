@@ -3,10 +3,11 @@
 <head>
   <title>/r/neopets Dream Pets</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <% if user_signed_in? %>
-    <%= tag 'meta', name: 'current-user-id', content: current_user.id %>
-    <%= tag 'meta', name: 'current-user-admin', content: current_user.admin %>
+    <%= tag 'meta', name: 'current-user-id', content: current_user.id, 'data-turbolinks-track' => true %>
+    <%= tag 'meta', name: 'current-user-admin', content: current_user.admin, 'data-turbolinks-track' => true %>
   <% end %>
 </head>
 <body>
@@ -32,6 +33,5 @@
 
 <%= yield %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
