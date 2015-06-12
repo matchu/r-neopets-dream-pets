@@ -8,8 +8,8 @@
         <th>Species</th>
         <th>Color</th>
         <th>Minimum name quality</th>
+        <th>Requires clothes?</th>
         <th>Info</th>
-        <th>Requires clothes</th>
         <th>Requested by</th>
         <th>Requested when</th>
         <th colspan="2"></th>
@@ -24,8 +24,8 @@
             <td><%= pet_request.species.name %></td>
             <td><%= pet_request.color.name %></td>
             <td><%= pet_request.minimum_name_quality.abbreviation %></td>
+            <td><% if pet_request.requires_clothes %>Requires clothes<% end %></td>
             <td><%= pet_request.info %></td>
-            <td><%= pet_request.requires_clothes %></td>
             <td class="creator" data-id="<%= pet_request.creator.id %>">
               <%= link_to_user pet_request.creator %>
             </td>
