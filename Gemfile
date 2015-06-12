@@ -5,6 +5,9 @@ ruby '2.2.2'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git'
 
+# For rake pet_requests:import only; don't have the whole app require it
+gem 'redd', '~> 0.7.0', require: false
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
