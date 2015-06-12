@@ -31,9 +31,11 @@
     <%= f.label :info %><br>
     <%= f.text_area :info %>
   </div>
-  <div class="field">
-    <%= f.label :requires_clothes %><br>
-    <%= f.check_box :requires_clothes %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :requires_clothes %>
+      Requires clothes?
+    </label>
   </div>
   <div class="actions">
     <%= f.submit 'Save' %>

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>/r/neopets Dream Pets</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
   <% if user_signed_in? %>
     <%= tag 'meta', name: 'current-user-id', content: current_user.id, 'data-turbolinks-track' => true %>
     <%= tag 'meta', name: 'current-user-admin', content: current_user.admin, 'data-turbolinks-track' => true %>
@@ -12,26 +18,28 @@
 </head>
 <body>
 
-<header>
-  <% if user_signed_in? %>
-    Welcome, <%= link_to_user current_user %>!
-    <% if current_user.admin? %>
-      As an admin, you can edit or delete <em>any</em> pet request.
+<div class="container">
+  <header>
+    <% if user_signed_in? %>
+      Welcome, <%= link_to_user current_user %>!
+      <% if current_user.admin? %>
+        As an admin, you can edit or delete <em>any</em> pet request.
+      <% end %>
+      <%= link_to 'Sign out', sign_out_path %>
+    <% else %>
+      <% if Rails.env.development? %>
+        <%= link_to 'Sign in as a developer', '/auth/developer' %>
+      <% end %>
+      <%= link_to 'Sign in with Reddit', '/auth/reddit' %>
     <% end %>
-    <%= link_to 'Sign out', sign_out_path %>
-  <% else %>
-    <% if Rails.env.development? %>
-      <%= link_to 'Sign in as a developer', '/auth/developer' %>
-    <% end %>
-    <%= link_to 'Sign in with Reddit', '/auth/reddit' %>
+  </header>
+
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "flash-#{key}", role: 'alert' %>
   <% end %>
-</header>
 
-<% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "flash-#{key}" %>
-<% end %>
-
-<%= yield %>
+  <%= yield %>
+</div>
 
 </body>
 </html>

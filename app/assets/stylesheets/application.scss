@@ -10,14 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "pet_requests";
+
 .flash-alert {
-  color: red;
+  @extend .alert;
+  @extend .alert-danger;
 }
 
 .flash-notice {
+  @extend .alert;
+  @extend .alert-success;
   color: green;
 }

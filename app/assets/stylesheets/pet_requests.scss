@@ -18,6 +18,9 @@
 }
 
 .pet-requests {
+  @extend .table;
+  @extend .table-striped;
+
   .edit, .destroy {
     display: none;
   }
@@ -26,5 +29,11 @@
     .edit, .destroy {
       display: inline;
     }
+  }
+}
+
+.edit_pet_request {
+  .field {
+    @extend .form-group;
   }
 }
