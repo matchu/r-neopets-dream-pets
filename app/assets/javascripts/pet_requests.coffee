@@ -13,8 +13,8 @@ updatePage = () ->
     table.className += ' admin' for table in document.querySelectorAll('.pet-requests')
 
   currentUserId = getMeta('current-user-id')
-  rows = document.querySelectorAll('.pet-requests tbody tr')
-  currentUserRows = (row for row in rows when userOwnsRow(currentUserId, row))
+  currentUserCreatorColumns = document.querySelectorAll(".pet-requests tbody tr .creator[data-id=\"#{currentUserId}\"]")
+  currentUserRows = (col.parentNode for col in currentUserCreatorColumns)
   row.className += ' current-user' for row in currentUserRows
 
 document.addEventListener('page:change', updatePage);
