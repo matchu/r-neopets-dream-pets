@@ -3,21 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :auth?, :current_auth_provider, :current_auth_name
+  helper_method :user_signed_in?, :current_user
 
-  def auth?
-    session.has_key? :auth_hash
+  def user_signed_in?
+    session.has_key? :user_id
   end
 
-  def current_auth_provider
-    ActiveSupport::StringInquirer.new current_auth_hash['provider']
-  end
-
-  def current_auth_name
-    current_auth_hash['info']['name']
-  end
-
-  def current_auth_hash
-    session[:auth_hash]
+  def current_user
+    User.find session[:user_id]
   end
 end

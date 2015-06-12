@@ -9,8 +9,8 @@
 <body>
 
 <header>
-  <% if auth? %>
-    Welcome, <%= link_to_user current_auth_provider, current_auth_name %>!
+  <% if user_signed_in? %>
+    Welcome, <%= link_to_user current_user %>!
     <%= link_to 'Sign out', sign_out_path %>
   <% else %>
     <% if Rails.env.development? %>

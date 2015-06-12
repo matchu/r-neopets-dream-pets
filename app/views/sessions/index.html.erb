@@ -1,5 +1,5 @@
-<% if auth? %>
-Auth: <%= @current_auth_hash %>
+<% if user_signed_in? %>
+Auth: <%= current_user.auth_hash %>
 <% else %>
 No auth
 <% end %>

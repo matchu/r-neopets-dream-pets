@@ -1,9 +1,9 @@
 module ApplicationHelper
-  def link_to_user(provider, name)
-    if provider.reddit?
-      link_to name, reddit_user_path(name)
+  def link_to_user(user)
+    if user.provider == 'reddit'
+      link_to user.name, reddit_user_path(user.name)
     else
-      name
+      user.name
     end
   end
 

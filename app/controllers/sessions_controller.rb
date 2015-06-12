@@ -4,19 +4,19 @@ class SessionsController < ApplicationController
   protect_from_forgery except: :create
 
   def create
-    session[:auth_hash] = auth_hash
+    user = User.from_auth_hash(auth_hash)
+    session[:user_id] = user.id
     redirect_to root_path
   end
 
   def destroy
     # TODO: protect from forgery?
-    session.delete :auth_hash
+    session.delete :user_id
     redirect_to root_path
   end
 
   def index
     # Auth debug method for development
-    @current_auth_hash = current_auth_hash
   end
 
   protected
