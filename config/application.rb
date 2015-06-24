@@ -22,5 +22,7 @@ module RNeopetsDreamPets
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.x.user_maximum_pet_requests = 10
   end
 end

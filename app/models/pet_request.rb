@@ -6,4 +6,12 @@ class PetRequest < ActiveRecord::Base
   belongs_to :minimum_name_quality, class_name: 'NameQuality'
 
   validates_presence_of :creator, :species, :color, :conversion_state, :minimum_name_quality
+
+  validate :creator_can_add_pet_requests
+
+  def creator_can_add_pet_requests
+    unless creator.can_add_pet_requests?
+      errors.add(:base, "You can only request #{creator.maximum_pet_requests} dream pets at once")
+    end
+  end
 end

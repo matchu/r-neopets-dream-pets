@@ -3,6 +3,14 @@ class User < ActiveRecord::Base
 
   has_many :pet_requests, foreign_key: 'creator_id'
 
+  def maximum_pet_requests
+    Rails.configuration.x.user_maximum_pet_requests
+  end
+
+  def can_add_pet_requests?
+    pet_requests.size <= maximum_pet_requests
+  end
+
   def can_edit_pet_request?(pet_request)
     pet_request.creator_id == id || admin?
   end
