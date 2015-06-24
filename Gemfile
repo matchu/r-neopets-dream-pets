@@ -10,6 +10,8 @@ gem 'redd', '~> 0.7.0', require: false
 
 gem 'bootstrap-sass', '~> 3.3.4'
 
+gem 'rails-timeago', '~> 2.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use SCSS for stylesheets

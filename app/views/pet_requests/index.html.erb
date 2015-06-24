@@ -28,9 +28,7 @@
               <%= link_to_user pet_request.creator %>
             </td>
             <td>
-              <%= time_tag pet_request.created_at, title: pet_request.created_at do %>
-                <%= time_ago_in_words pet_request.created_at %> ago
-              <% end %>
+              <%= timeago_tag pet_request.created_at, force: true %>
             </td>
             <td>
               <%= link_to 'Edit', edit_pet_request_path(pet_request), :class => 'edit' %>
