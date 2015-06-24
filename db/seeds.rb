@@ -6,13 +6,32 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Species.create([{:name=>"Acara"}, {:name=>"Aisha"}, {:name=>"Blumaroo"}, {:name=>"Bori"}, {:name=>"Bruce"}, {:name=>"Buzz"}, {:name=>"Chia"}, {:name=>"Chomby"}, {:name=>"Cybunny"}, {:name=>"Draik"}, {:name=>"Elephante"}, {:name=>"Eyrie"}, {:name=>"Flotsam"}, {:name=>"Gelert"}, {:name=>"Gnorbu"}, {:name=>"Grarrl"}, {:name=>"Grundo"}, {:name=>"Hissi"}, {:name=>"Ixi"}, {:name=>"Jetsam"}, {:name=>"Jubjub"}, {:name=>"Kacheek"}, {:name=>"Kau"}, {:name=>"Kiko"}, {:name=>"Koi"}, {:name=>"Korbat"}, {:name=>"Kougra"}, {:name=>"Krawk"}, {:name=>"Kyrii"}, {:name=>"Lenny"}, {:name=>"Lupe"}, {:name=>"Lutari"}, {:name=>"Meerca"}, {:name=>"Moehog"}, {:name=>"Mynci"}, {:name=>"Nimmo"}, {:name=>"Ogrin"}, {:name=>"Peophin"}, {:name=>"Poogle"}, {:name=>"Pteri"}, {:name=>"Quiggle"}, {:name=>"Ruki"}, {:name=>"Scorchio"}, {:name=>"Shoyru"}, {:name=>"Skeith"}, {:name=>"Techo"}, {:name=>"Tonu"}, {:name=>"Tuskaninny"}, {:name=>"Uni"}, {:name=>"Usul"}, {:name=>"Wocky"}, {:name=>"Xweetok"}, {:name=>"Yurble"}, {:name=>"Zafara"}, {:name=>"Vandagyre"}])
-Color.create([{:name=>"Alien"}, {:name=>"Apple"}, {:name=>"Asparagus"}, {:name=>"Aubergine"}, {:name=>"Avocado"}, {:name=>"Baby"}, {:name=>"Biscuit"}, {:name=>"Blue"}, {:name=>"Blueberry"}, {:name=>"Brown"}, {:name=>"Camouflage"}, {:name=>"Carrot"}, {:name=>"Checkered"}, {:name=>"Chocolate"}, {:name=>"Chokato"}, {:name=>"Christmas"}, {:name=>"Clay"}, {:name=>"Cloud"}, {:name=>"Coconut"}, {:name=>"Custard"}, {:name=>"Darigan"}, {:name=>"Desert"}, {:name=>"Disco"}, {:name=>"Durian"}, {:name=>"Electric"}, {:name=>"Faerie"}, {:name=>"Fire"}, {:name=>"Garlic"}, {:name=>"Ghost"}, {:name=>"Glowing"}, {:name=>"Gold"}, {:name=>"Gooseberry"}, {:name=>"Grape"}, {:name=>"Green"}, {:name=>"Grey"}, {:name=>"Halloween"}, {:name=>"Ice"}, {:name=>"Invisible"}, {:name=>"Island"}, {:name=>"Jelly"}, {:name=>"Lemon"}, {:name=>"Lime"}, {:name=>"Mallow"}, {:name=>"Maraquan"}, {:name=>"Msp"}, {:name=>"Mutant"}, {:name=>"Orange"}, {:name=>"Pea"}, {:name=>"Peach"}, {:name=>"Pear"}, {:name=>"Pepper"}, {:name=>"Pineapple"}, {:name=>"Pink"}, {:name=>"Pirate"}, {:name=>"Plum"}, {:name=>"Plushie"}, {:name=>"Purple"}, {:name=>"Quigukiboy"}, {:name=>"Quigukigirl"}, {:name=>"Rainbow"}, {:name=>"Red"}, {:name=>"Robot"}, {:name=>"Royalboy"}, {:name=>"Royalgirl"}, {:name=>"Shadow"}, {:name=>"Silver"}, {:name=>"Sketch"}, {:name=>"Skunk"}, {:name=>"Snot"}, {:name=>"Snow"}, {:name=>"Speckled"}, {:name=>"Split"}, {:name=>"Sponge"}, {:name=>"Spotted"}, {:name=>"Starry"}, {:name=>"Strawberry"}, {:name=>"Striped"}, {:name=>"Thornberry"}, {:name=>"Tomato"}, {:name=>"Tyrannian"}, {:name=>"Usuki Boy"}, {:name=>"Usuki Girl"}, {:name=>"White"}, {:name=>"Yellow"}, {:name=>"Zombie"}, {:name=>"Onion"}, {:name=>"Magma"}, {:name=>"Relic"}, {:name=>"Woodland"}, {:name=>"Transparent"}, {:name=>"Maractite"}, {:name=>"8-bit"}, {:name=>"Swamp Gas"}, {:name=>"Water"}, {:name=>"Wraith"}, {:name=>"Eventide"}, {:name=>"Elderlyboy"}, {:name=>"Elderlygirl"}, {:name=>"Stealthy"}, {:name=>"Dimensional"}, {:name=>"Agueena"}, {:name=>"Pastel"}, {:name=>"Ummagine"}, {:name=>"Polka Dot"}])
-NameQuality.create([
-  { abbreviation: 'VWN' },
-  { abbreviation: 'WN' },
-  { abbreviation: 'WN (uncapped)' },
-  { abbreviation: 'DN' },
-  { abbreviation: 'AN' }
-])
-ConversionState.create([ { name: 'Converted' }, { name: 'Unconverted' } ])
+species_names = ["Acara", "Aisha", "Blumaroo", "Bori", "Bruce", "Buzz", "Chia", "Chomby", "Cybunny", "Draik", "Elephante", "Eyrie", "Flotsam", "Gelert", "Gnorbu", "Grarrl", "Grundo", "Hissi", "Ixi", "Jetsam", "Jubjub", "Kacheek", "Kau", "Kiko", "Koi", "Korbat", "Kougra", "Krawk", "Kyrii", "Lenny", "Lupe", "Lutari", "Meerca", "Moehog", "Mynci", "Nimmo", "Ogrin", "Peophin", "Poogle", "Pteri", "Quiggle", "Ruki", "Scorchio", "Shoyru", "Skeith", "Techo", "Tonu", "Tuskaninny", "Uni", "Usul", "Wocky", "Xweetok", "Yurble", "Zafara", "Vandagyre"]
+species_names.each do |name|
+  Species.find_or_create_by name: name
+end
+
+color_names =  ["Alien", "Apple", "Asparagus", "Aubergine", "Avocado", "Baby", "Biscuit", "Blue", "Blueberry", "Brown", "Camouflage", "Carrot", "Checkered", "Chocolate", "Chokato", "Christmas", "Clay", "Cloud", "Coconut", "Custard", "Darigan", "Desert", "Disco", "Durian", "Electric", "Faerie", "Fire", "Garlic", "Ghost", "Glowing", "Gold", "Gooseberry", "Grape", "Green", "Grey", "Halloween", "Ice", "Invisible", "Island", "Jelly", "Lemon", "Lime", "Mallow", "Maraquan", "Msp", "Mutant", "Orange", "Pea", "Peach", "Pear", "Pepper", "Pineapple", "Pink", "Pirate", "Plum", "Plushie", "Purple", "Quiguki Boy", "Quiguki Girl", "Rainbow", "Red", "Robot", "Royal Boy", "Royal Girl", "Shadow", "Silver", "Sketch", "Skunk", "Snot", "Snow", "Speckled", "Split", "Sponge", "Spotted", "Starry", "Strawberry", "Striped", "Thornberry", "Tomato", "Tyrannian", "Usuki Boy", "Usuki Girl", "White", "Yellow", "Zombie", "Onion", "Magma", "Relic", "Woodland", "Transparent", "Maractite", "8-bit", "Swamp Gas", "Water", "Wraith", "Eventide", "Elderly Boy", "Elderly Girl", "Stealthy", "Dimensional", "Agueena", "Pastel", "Ummagine", "Polka Dot"]
+color_names.each do |name|
+  Color.find_or_create_by name: name
+end
+
+name_quality = NameQuality.find_or_initialize_by(abbreviation: 'VWN')
+name_quality.update(description: 'Pronounceable, 4-7 letters in length, containing only letters, with only the first letter of the name capitalized (e.g. Xxxxxxx)')
+
+name_quality = NameQuality.find_or_initialize_by(abbreviation: 'WN')
+name_quality.update(description: 'Pronounceable, of any length, containing only letters, with only the first letter of the name capitalized (e.g. Xxxxxxxxx)')
+
+name_quality = NameQuality.find_or_initialize_by(abbreviation: 'WN (uncapped)')
+name_quality.update(description: 'Pronounceable, of any length, containing only letters, with either no capital letters or logical capitalization (e.g. xxxxxx or XxxxXxx)')
+
+name_quality = NameQuality.find_or_initialize_by(abbreviation: 'DN')
+name_quality.update(description: 'Pronounceable, of any length, containing mostly letters, with any capitalization pattern (e.g. XxXxXxx, Xxxxxxx, Xxxx##, Xxxxx )')
+
+name_quality = NameQuality.find_or_initialize_by(abbreviation: 'AN')
+name_quality.update(description: 'Any format is acceptable')
+
+conversion_state_names = ['Converted', 'Unconverted']
+conversion_state_names.each do |name|
+  ConversionState.find_or_create_by(name: name)
+end

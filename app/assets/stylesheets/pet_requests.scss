@@ -17,8 +17,20 @@
   }
 }
 
-.edit_pet_request {
+.new_pet_request, .edit_pet_request {
   .field {
     @extend .form-group;
+  }
+
+  .dream-pet {
+    @extend .form-inline;
+  }
+
+  select, textarea {
+    @extend .form-control;
+  }
+
+  .rules {
+    @extend .help-block;
   }
 }

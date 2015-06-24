@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612162039) do
+ActiveRecord::Schema.define(version: 20150624172202) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20150612162039) do
 
   create_table "name_qualities", force: :cascade do |t|
     t.string   "abbreviation"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "description",  default: "", null: false
   end
 
   create_table "pet_requests", force: :cascade do |t|
