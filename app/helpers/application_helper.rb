@@ -7,7 +7,15 @@ module ApplicationHelper
     end
   end
 
+  def contact_us_path
+    'http://www.reddit.com/message/compose?to=%2Fr%2FNeopetsDreamPets'
+  end
+
   def reddit_user_path(name)
     "https://www.reddit.com/user/#{name}"
+  end
+
+  def source_code_path
+    "https://github.com/matchu/r-neopets-dream-pets"
   end
 end
