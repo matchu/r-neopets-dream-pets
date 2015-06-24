@@ -68,10 +68,10 @@ class PetRequestsController < ApplicationController
     end
 
     def set_attribute_collections
-      @species = Species.order(:name).all
-      @colors = Color.order(:name).all
-      @conversion_states = ConversionState.order(:name).all
-      @name_qualities = NameQuality.all
+      @species = Species.order(:name)
+      @colors = Color.order(:name)
+      @conversion_states = ConversionState.order(:name)
+      @name_qualities = NameQuality.sorted
     end
 
     def require_signed_in

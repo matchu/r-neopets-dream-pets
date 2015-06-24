@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624172202) do
+ActiveRecord::Schema.define(version: 20150624184419) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(version: 20150624172202) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "description",  default: "", null: false
+    t.integer  "sort_idx"
   end
+
+  add_index "name_qualities", ["sort_idx"], name: "index_name_qualities_on_sort_idx"
 
   create_table "pet_requests", force: :cascade do |t|
     t.integer  "species_id"

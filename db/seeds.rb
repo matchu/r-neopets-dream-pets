@@ -17,19 +17,19 @@ color_names.each do |name|
 end
 
 name_quality = NameQuality.find_or_initialize_by(abbreviation: 'VWN')
-name_quality.update(description: 'Pronounceable, 4-7 letters in length, containing only letters, with only the first letter of the name capitalized (e.g. Xxxxxxx)')
+name_quality.update(sort_idx: 0, description: 'Pronounceable, 4-7 letters in length, containing only letters, with only the first letter of the name capitalized (e.g. Xxxxxxx)')
 
 name_quality = NameQuality.find_or_initialize_by(abbreviation: 'WN')
-name_quality.update(description: 'Pronounceable, of any length, containing only letters, with only the first letter of the name capitalized (e.g. Xxxxxxxxx)')
+name_quality.update(sort_idx: 1, description: 'Pronounceable, of any length, containing only letters, with only the first letter of the name capitalized (e.g. Xxxxxxxxx)')
 
-name_quality = NameQuality.find_or_initialize_by(abbreviation: 'WN (uncapped)')
-name_quality.update(description: 'Pronounceable, of any length, containing only letters, with either no capital letters or logical capitalization (e.g. xxxxxx or XxxxXxx)')
+name_quality = NameQuality.find_or_initialize_by(abbreviation: 'WN(uncapped)')
+name_quality.update(sort_idx: 2, description: 'Pronounceable, of any length, containing only letters, with either no capital letters or logical capitalization (e.g. xxxxxx or XxxxXxx)')
 
 name_quality = NameQuality.find_or_initialize_by(abbreviation: 'DN')
-name_quality.update(description: 'Pronounceable, of any length, containing mostly letters, with any capitalization pattern (e.g. XxXxXxx, Xxxxxxx, Xxxx##, Xxxxx )')
+name_quality.update(sort_idx: 3, description: 'Pronounceable, of any length, containing mostly letters, with any capitalization pattern (e.g. XxXxXxx, Xxxxxxx, Xxxx##, Xxxxx )')
 
 name_quality = NameQuality.find_or_initialize_by(abbreviation: 'AN')
-name_quality.update(description: 'Any format is acceptable')
+name_quality.update(sort_idx: 4, description: 'Any format is acceptable')
 
 conversion_state_names = ['Converted', 'Unconverted']
 conversion_state_names.each do |name|
