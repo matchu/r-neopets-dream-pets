@@ -15,6 +15,10 @@ module ApplicationHelper
     "https://www.reddit.com/user/#{name}"
   end
 
+  def subreddit_path(name)
+    "https://www.reddit.com/r/#{name}"
+  end
+
   def source_code_path
     "https://github.com/matchu/r-neopets-dream-pets"
   end
