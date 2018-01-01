@@ -17,4 +17,4 @@ updatePage = () ->
   currentUserRows = (col.parentNode for col in currentUserCreatorColumns)
   row.className += ' current-user' for row in currentUserRows
 
-document.addEventListener('page:change', updatePage);
+document.addEventListener('turbolinks:load', updatePage);
