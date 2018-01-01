@@ -1,44 +1,15 @@
-<% cache pet_requests_table_cache_key do %>
-  <table class="pet-requests">
-    <thead>
-      <tr>
-        <th>Converted?</th>
-        <th>Species</th>
-        <th>Color</th>
-        <th>Minimum name quality</th>
-        <th>Requires clothes?</th>
-        <th>Info</th>
-        <th>Requested by</th>
-        <th>Requested when</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+<% show_titles = !@recent_pet_requests.empty? && !@older_pet_requests.empty? %>
 
-    <tbody>
-      <% @pet_requests.each do |pet_request| %>
-        <% cache ['pet_request_row', pet_request] do %>
-          <tr>
-            <td><%= pet_request.conversion_state.name %></td>
-            <td><%= pet_request.species.name %></td>
-            <td><%= pet_request.color.name %></td>
-            <td><%= pet_request.minimum_name_quality.abbreviation %></td>
-            <td><% if pet_request.requires_clothes %>Requires clothes<% end %></td>
-            <td><%= pet_request.info %></td>
-            <td class="creator" data-id="<%= pet_request.creator.id %>">
-              <%= link_to_user pet_request.creator %>
-            </td>
-            <td>
-              <%= timeago_tag pet_request.created_at, force: true %>
-            </td>
-            <td>
-              <%= link_to 'Edit', edit_pet_request_path(pet_request), :class => 'edit' %>
-            </td>
-            <td>
-              <%= link_to 'Destroy', pet_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
-            </td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+<% if !@recent_pet_requests.empty? %>
+  <% if show_titles %>
+    <h2>Recent requests</h2>
+  <% end %>
+  <%= render "table", pet_requests: @recent_pet_requests %>
+<% end %>
+
+<% if !@older_pet_requests.empty? %>
+  <% if show_titles %>
+    <h2>Archived requests</h2>
+  <% end %>
+  <%= render "table", pet_requests: @older_pet_requests %>
 <% end %>
