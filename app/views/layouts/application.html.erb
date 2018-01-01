@@ -27,6 +27,8 @@
       <ul>
         <% if user_signed_in? %>
           <li><%= link_to "Add your pet", new_pet_request_path, class: 'new-request-link' %></li>
+        <% else %>
+          <li><%= link_to "Add your pet", '/auth/reddit', class: 'new-request-link' %></li>
         <% end %>
         <li><%= link_to "Source code", source_code_path %></li>
         <li><%= link_to "Contact us", contact_us_path %></li>
