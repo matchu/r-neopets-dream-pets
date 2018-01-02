@@ -43,7 +43,7 @@ class PetRequest < ApplicationRecord
       recent_pet_requests = []
       archived_pet_requests = []
       all_pet_requests.each do |pet_request|
-        if pet_request.updated_at >= 1.minute.ago
+        if pet_request.updated_at >= 1.year.ago
           recent_pet_requests << pet_request
         else
           archived_pet_requests << pet_request
