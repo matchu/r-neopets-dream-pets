@@ -6,20 +6,9 @@ class PetRequestsController < ApplicationController
   # GET /pet_requests
   # GET /pet_requests.json
   def index
-    all_pet_requests = PetRequest.
-      includes(:creator, :conversion_state, :species, :color, :minimum_name_quality).
-      joins(:species, :color, :conversion_state).
-      order('conversion_states.name, species.name, colors.name, pet_requests.created_at')
-    
-    @recent_pet_requests = []
-    @older_pet_requests = []
-    all_pet_requests.each do |pet_request|
-      if pet_request.updated_at >= 1.year.ago
-        @recent_pet_requests << pet_request
-      else
-        @older_pet_requests << pet_request
-      end
-    end
+    recent_and_archived_pet_requests = PetRequest.recent_and_archived
+    @recent_pet_requests = recent_and_archived_pet_requests[:recent]
+    @archived_pet_requests = recent_and_archived_pet_requests[:archived]
   end
 
   # GET /pet_requests/new

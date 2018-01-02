@@ -1,15 +1,15 @@
-<% show_titles = !@recent_pet_requests.empty? && !@older_pet_requests.empty? %>
+<% show_titles = !@recent_pet_requests.empty? && !@archived_pet_requests.empty? %>
 
 <% if !@recent_pet_requests.empty? %>
   <% if show_titles %>
     <h2>Recent requests</h2>
   <% end %>
-  <%= render "table", pet_requests: @recent_pet_requests %>
+  <%= render 'table', pet_requests: @recent_pet_requests %>
 <% end %>
 
-<% if !@older_pet_requests.empty? %>
+<% if !@archived_pet_requests.empty? %>
   <% if show_titles %>
     <h2>Archived requests</h2>
   <% end %>
-  <%= render "table", pet_requests: @older_pet_requests %>
+  <%= render 'table', pet_requests: @archived_pet_requests %>
 <% end %>
