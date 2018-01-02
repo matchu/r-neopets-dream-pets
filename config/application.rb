@@ -17,6 +17,8 @@ module RNeopetsDreamPets
     # drop jobs if something goes wrong.
     config.active_job.queue_adapter = :async
 
-    config.x.user_maximum_pet_requests = 10
+    # How many pets a user can request at once. In production, this is
+    # overridden to an actual maximum value.
+    config.x.user_maximum_pet_requests = Float::INFINITY
   end
 end

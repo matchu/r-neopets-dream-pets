@@ -14,4 +14,8 @@ class PetRequest < ApplicationRecord
       errors.add(:base, "You can only request #{creator.maximum_pet_requests} dream pets at once")
     end
   end
+
+  def summary_string
+    "#{conversion_state.name} #{minimum_name_quality.abbreviation} #{color.name} #{species.name}"
+  end
 end

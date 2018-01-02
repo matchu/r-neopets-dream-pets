@@ -52,5 +52,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.x.user_maximum_pet_requests = 3
+  # This is helpful for testing the max pet request counter :)
+  # config.x.user_maximum_pet_requests = 3
 end

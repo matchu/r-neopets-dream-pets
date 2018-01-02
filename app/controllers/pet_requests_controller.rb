@@ -40,6 +40,7 @@ class PetRequestsController < ApplicationController
       if @pet_request.save
         format.html { redirect_to pet_requests_path, notice: 'Pet request was successfully created.' }
         format.json { render :show, status: :created, location: @pet_request }
+        PostInDiscordJob.perform_later(@pet_request)
       else
         format.html { render :new }
         format.json { render json: @pet_request.errors, status: :unprocessable_entity }
