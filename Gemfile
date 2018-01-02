@@ -66,5 +66,8 @@ group :production do
   # TODO: should probs use the same database everywhere xP
   gem 'pg'
 
-  gem 'rails_12factor'
+  # It's surprisingly important to gzip our application responses! In practice,
+  # our index page gets huge, but mostly with redundant HTML structure - at
+  # time of writing, the index page is 292K uncompressed, and 26K compressed.
+  gem 'heroku-deflater'
 end
