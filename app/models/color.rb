@@ -1,2 +1,2 @@
-class Color < ActiveRecord::Base
+class Color < ApplicationRecord
 end

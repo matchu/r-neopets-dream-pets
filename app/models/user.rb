@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   serialize :auth_hash
 
   has_many :pet_requests, foreign_key: 'creator_id'

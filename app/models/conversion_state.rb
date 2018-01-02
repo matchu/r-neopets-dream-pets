@@ -1,2 +1,2 @@
-class ConversionState < ActiveRecord::Base
+class ConversionState < ApplicationRecord
 end

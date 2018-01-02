@@ -1,2 +1,2 @@
-class Species < ActiveRecord::Base
+class Species < ApplicationRecord
 end

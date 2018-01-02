@@ -1,4 +1,4 @@
-class PetRequest < ActiveRecord::Base
+class PetRequest < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   belongs_to :species
   belongs_to :color
