@@ -3,11 +3,22 @@ require 'net/http'
 class PostInDiscordJob < ApplicationJob
   queue_as :default
 
-  DISCORD_WEBHOOK_URL = URI.parse(ENV['DISCORD_WEBHOOK_URL'])
-  HTTP_CLIENT = Net::HTTP.new(DISCORD_WEBHOOK_URL.host, DISCORD_WEBHOOK_URL.port)
-  HTTP_CLIENT.use_ssl = true
+  if ENV['DISCORD_WEBHOOK_URL']
+    ENABLED = true
+    DISCORD_WEBHOOK_URL = URI.parse(ENV['DISCORD_WEBHOOK_URL'])
+    HTTP_CLIENT = Net::HTTP.new(DISCORD_WEBHOOK_URL.host, DISCORD_WEBHOOK_URL.port)
+    HTTP_CLIENT.use_ssl = true
+  else
+    ENABLED = false
+  end
 
   def perform(pet_request)
+    if !ENABLED
+      logger.warn("No DISCORD_WEBHOOK_URL env variable was specified, so " +
+        "PostInDiscordJob is a no-op.")
+      return
+    end
+
     request = Net::HTTP::Post.new(DISCORD_WEBHOOK_URL.request_uri,
       {'Content-Type' => 'application/json'})
     request.body = build_discord_message(pet_request).to_json
