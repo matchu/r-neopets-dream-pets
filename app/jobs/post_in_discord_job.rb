@@ -39,8 +39,7 @@ class PostInDiscordJob < ApplicationJob
         color: 0xFF00FF,
         timestamp: pet_request.created_at.utc.iso8601,
         author: {
-          # This attribute won't be presented as Markdown, so isn't escaped.
-          name: "Dream Pet added by /u/#{pet_request.creator.name}",
+          name: escape_markdown("Dream Pet added by /u/#{pet_request.creator.name}"),
           url: "https://www.reddit.com/user/#{pet_request.creator.name}",
         },
         footer: {
