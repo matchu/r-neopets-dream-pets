@@ -26,6 +26,7 @@ module RNeopetsDreamPets
     config.active_record.yaml_column_permitted_classes = [
       OmniAuth::AuthHash,
       OmniAuth::AuthHash::InfoHash,
+      Hashie::Array,
     ]
   end
 end
