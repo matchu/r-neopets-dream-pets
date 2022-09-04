@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '3.1.2'
 
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-oauth2', '~> 1.3.1'
@@ -9,18 +9,18 @@ gem 'omniauth-reddit', :git => 'https://github.com/jackdempsey/omniauth-reddit.g
 # For rake pet_requests:import only; don't have the whole app require it
 gem 'redd', '~> 0.7.0', require: false
 
-gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 gem 'rails-timeago', '~> 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.4'
+gem 'rails', '7.0.3.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2.2'
+gem 'coffee-rails', '~> 5.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -28,10 +28,9 @@ gem 'coffee-rails', '~> 4.2.2'
 gem 'jquery-rails', '~> 4.3.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Puma is the web server that Rails runs behind!
+gem 'puma', '~> 5.6', '>= 5.6.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

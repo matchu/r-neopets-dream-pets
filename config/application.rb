@@ -20,5 +20,12 @@ module RNeopetsDreamPets
     # How many pets a user can request at once. In production, this is
     # overridden to an actual maximum value.
     config.x.user_maximum_pet_requests = Float::INFINITY
+
+    # To serialize OmniAuth hashes in user.rb, we must mark them as
+    # allowable data classes for YAML.
+    config.active_record.yaml_column_permitted_classes = [
+      OmniAuth::AuthHash,
+      OmniAuth::AuthHash::InfoHash,
+    ]
   end
 end
