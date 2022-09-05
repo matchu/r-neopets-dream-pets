@@ -31,6 +31,6 @@ module ApplicationHelper
   end
 
   def heroku_message_is_still_relevant?
-    Time.now > HEROKU_MESSAGE_BECOMES_IRRELEVANT_AT
+    Time.now < HEROKU_MESSAGE_BECOMES_IRRELEVANT_AT
   end
 end
