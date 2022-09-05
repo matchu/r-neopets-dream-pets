@@ -22,4 +22,15 @@ module ApplicationHelper
   def source_code_path
     "https://github.com/matchu/r-neopets-dream-pets"
   end
+
+  HEROKU_APP_GOES_DOWN_APPROXIMATELY_AT = Time.new(2022, 11, 28)
+  HEROKU_MESSAGE_BECOMES_IRRELEVANT_AT = Time.new(2022, 12, 28)
+
+  def heroku_app_is_probably_still_up?
+    Time.now < HEROKU_APP_GOES_DOWN_APPROXIMATELY_AT
+  end
+
+  def heroku_message_is_still_relevant?
+    Time.now > HEROKU_MESSAGE_BECOMES_IRRELEVANT_AT
+  end
 end

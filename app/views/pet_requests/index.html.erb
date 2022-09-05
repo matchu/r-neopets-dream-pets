@@ -1,5 +1,41 @@
 <% show_titles = !@recent_pet_requests.empty? && !@archived_pet_requests.empty? %>
 
+<% if heroku_message_is_still_relevant? %>
+  <div class="flash-notice">
+    <p>
+      We've changed our URL to
+      <strong><code>r-neopets-dream-pets.openneo.net</code></strong>!
+    </p>
+    <% if heroku_app_is_probably_still_up? %>
+      <p>
+        Links that use <code>herokuapp.com</code> will break on November 28,
+        2022, because our previous host Heroku is
+        <a href="https://blog.heroku.com/next-chapter">
+          increasing their costs
+        </a>
+        for small apps like ours, so we've decided to change hosts.
+        (And we made the mistake of using that Heroku-only domain for all our
+        links back in 2015, oops! 😳)
+      </p>
+    <% else %>
+      <p>
+        Links that use <code>herokuapp.com</code> broke on November 28,
+        2022, because our previous host Heroku
+        <a href="https://blog.heroku.com/next-chapter">
+          increased their costs
+        </a>
+        for small apps like ours, so we decided to change hosts.
+        (And we made the mistake of using that Heroku-only domain for all our
+        links back in 2015, oops! 😳)
+      </p>
+    <% end %>
+    <p>
+      Sorry for the trouble, and please update your links and bookmarks!
+      Thank you! 💖
+    </p>
+  </div>
+<% end %>
+
 <% if !@recent_pet_requests.empty? %>
   <% if show_titles %>
     <h2>Recent requests</h2>
