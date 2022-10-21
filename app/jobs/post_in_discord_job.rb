@@ -29,6 +29,8 @@ class PostInDiscordJob < ApplicationJob
         "#{response.code} #{response.message}. " +
         "Body: #{response.body}"
     end
+
+    logger.info "Successfully posted request to Discord: #{pet_request.id} (by #{pet_request.creator.name})"
   end
 
   private
